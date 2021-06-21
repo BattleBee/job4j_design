@@ -6,7 +6,7 @@ import org.junit.Test;
 public class TriggerTest {
 
     @Test
-    public void test() {
+    public void triggerTest() {
         Assert.assertEquals(1, new Trigger().someLogic());
     }
 
