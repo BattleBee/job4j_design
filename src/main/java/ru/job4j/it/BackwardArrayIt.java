@@ -19,9 +19,10 @@ public class BackwardArrayIt implements Iterator<Integer> {
 
     @Override
     public Integer next() {
-        if (!hasNext()) {
-            throw new NoSuchElementException();
+        if (!hasNext()) { // если в итераторе нет элементов и мы вызовем метод next
+            throw new NoSuchElementException(); // в этом случае итератор должен сгенерировать исключение
         }
         return data[point--];
     }
 }
+
