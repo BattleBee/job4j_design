@@ -4,9 +4,18 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Collections;
 
+/**
+ * В Stream API есть метод flatMap. Он позволяет получить из элемента потока другой поток.
+ * В этом задании создаем подобное поведение. Условия задания:
+ * Класс FlatMap принимает объект вложенных итераторов и реализует два метода: next и hasNext.
+ * Метод next должен вернуть числа из вложенных итераторов.
+ * В этом задании нельзя копировать элементы во временный список.
+ * @param <T> обобщенный тип, используемый внутри класса вместо реального типа данных,
+ *            который задается при создании экземпляра класса.
+ */
 public class FlatMap<T> implements Iterator<T> {
     private final Iterator<Iterator<T>> data;
-    private Iterator<T> cursor = Collections.emptyIterator();
+    private Iterator<T> cursor = Collections.emptyIterator(); // пустой итератор в каестве курсора
 
     public FlatMap(Iterator<Iterator<T>> data) {
         this.data = data;
