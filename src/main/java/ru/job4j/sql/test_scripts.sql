@@ -1,24 +1,30 @@
--- Создать таблицу с заданными полями (наименование, тип, размер, запрет нулевых значений)
-create table persons (
+/* Создать таблицу с заданными полями (наименование поля, тип, размер, запрет нулевых значений) */
+CREATE TABLE persons (
 	id serial primary key,
-	first_name varchar (50) not null,
-	second_name varchar(50) not null,
-	age int not null,
-	address text not null
+	first_name varchar (50) NOT NULL,
+	second_name varchar(50) NOT NULL,
+	age int NOT NULL,
+	address text NOT NULL
 )
--- Добавить значение в указанные поля
-insert into persons(first_name, second_name, age, address) values('Jon', 'Snow', 17, 'Winterfell');
+/* Добавить значение в указанные поля */
+INSERT INTO persons(first_name, second_name, age, address) VALUES ('Jon', 'Snow', 17, 'Winterfell');
 
--- Изменить значение поля
-update persons set second_name = 'Targaryen', age = 23, address= 'the Wall';
+/* Изменить значение поля */
+UPDATE persons SET second_name = 'Targaryen', age = 23, address= 'the Wall';
 
--- добавить колонку в таблицу
-alter table persons add column age int not null;
+/* добавить колонку в таблицу */
+ALTER TABLE persons ADD COLUMN age int NOT NULL;
 
--- Показать выборку значений таблицы
-select * from persons;
+SELECT * FROM persons; -- Показать выборку значений таблицы
 
--- Удалить все значения из таблиц
-delete from persons;
+DELETE FROM persons; -- Удалить все значения из указанной таблицы
 
+DROP TABLE IF EXISTS persons; -- удалить указанную таблицу если она уже существует
+
+DROP TABLE persons; -- удалить указанную таблицу
+
+-- Пример однострочного комментария
+
+/* Комментарий свозможностью коментирования
+    в несколько строк  */
 
