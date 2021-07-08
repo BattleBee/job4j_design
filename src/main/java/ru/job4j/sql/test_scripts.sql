@@ -1,3 +1,6 @@
+
+DROP TABLE IF EXISTS persons; -- удалить указанную таблицу если она уже существует
+
 /* Создать таблицу с заданными полями (наименование поля, тип, размер, запрет нулевых значений) */
 CREATE TABLE persons (
 	id serial primary key,
@@ -7,7 +10,9 @@ CREATE TABLE persons (
 	address text NOT NULL
 )
 /* Добавить значение в указанные поля */
-INSERT INTO persons(first_name, second_name, age, address) VALUES ('Jon', 'Snow', 17, 'Winterfell');
+INSERT INTO persons(first_name, second_name, age, address)
+VALUES
+    ('Jon', 'Snow', 17, 'Winterfell');
 
 /* Изменить значение поля */
 UPDATE persons SET second_name = 'Targaryen', age = 23, address= 'the Wall';
@@ -15,13 +20,18 @@ UPDATE persons SET second_name = 'Targaryen', age = 23, address= 'the Wall';
 /* добавить колонку в таблицу */
 ALTER TABLE persons ADD COLUMN age int NOT NULL;
 
-SELECT * FROM persons; -- Показать выборку значений таблицы
+SELECT first_name, age, address
+FROM persons; -- Показать выборку выбранных значений таблицы
 
+SELECT DISTINCT address -- Выборка уникальных  значений таблицы
+FROM persons; -- выведенные значения не повторяются
+
+SELECT * FROM persons; -- Показать выборку всех значений таблицы
+
+/*
 DELETE FROM persons; -- Удалить все значения из указанной таблицы
-
-DROP TABLE IF EXISTS persons; -- удалить указанную таблицу если она уже существует
-
 DROP TABLE persons; -- удалить указанную таблицу
+*/
 
 -- Пример однострочного комментария
 
