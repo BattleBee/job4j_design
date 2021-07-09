@@ -12,7 +12,7 @@ CREATE TABLE passport (
                       id serial primary key,
                       number int NOT NULL,
                       issuing_authority varchar(50) NOT NULL,
-                      person_id int references person(id)
+                      person_id int references person(id) unique
 );
 
 
