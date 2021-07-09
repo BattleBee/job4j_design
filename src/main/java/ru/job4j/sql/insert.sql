@@ -1,12 +1,21 @@
--- SQL скрипт insert.sql заполняющий начальные данные для системы заявок.
 
-INSERT INTO users (first_name, second_name, role_id)
-VALUES
-('Агния', 'Барто', 1);
+-- SQL скрипт insert.sql заполняющий начальные данные для системы заявок.
 
 INSERT INTO role (name)
 VALUES
 ('писатель');
+
+INSERT INTO category (name)
+VALUES
+('category 1');
+
+INSERT INTO state (name)
+VALUES
+('state 1');
+
+INSERT INTO users (first_name, second_name, role_id)
+VALUES
+('Агния', 'Барто', 1);
 
 INSERT INTO rules (name, description)
 VALUES
@@ -27,12 +36,4 @@ VALUES
 INSERT INTO attaches (item_id)
 VALUES
 (1);
-
-INSERT INTO category (name)
-VALUES
-('category 1');
-
-INSERT INTO state (name)
-VALUES
-('state 1');
 

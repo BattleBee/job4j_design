@@ -1,4 +1,6 @@
-package ru.job4j.generics;
+package ru.job4j.generics.wildcard;
+
+import ru.job4j.generics.wildcard.Predator;
 
 public class Tiger extends Predator {
     @Override

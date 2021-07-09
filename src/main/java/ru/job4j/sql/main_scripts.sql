@@ -28,6 +28,10 @@ FROM persons; -- выведенные значения не повторяютс
 
 SELECT * FROM persons; -- Показать выборку всех значений таблицы
 
+select table_name, column_name -- Получение списка таблиц базы данных и ее полей
+from information_schema.columns
+where table_schema='public'
+
 /*
 DELETE FROM persons; -- Удалить все значения из указанной таблицы
 DROP TABLE persons; -- удалить указанную таблицу
@@ -37,4 +41,5 @@ DROP TABLE persons; -- удалить указанную таблицу
 
 /* Комментарий свозможностью коментирования
     в несколько строк  */
+
 

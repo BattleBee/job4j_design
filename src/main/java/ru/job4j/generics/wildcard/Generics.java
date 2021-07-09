@@ -1,4 +1,4 @@
-package ru.job4j.generics;
+package ru.job4j.generics.wildcard;
 
 import java.util.ArrayList;
 import java.util.Iterator;
