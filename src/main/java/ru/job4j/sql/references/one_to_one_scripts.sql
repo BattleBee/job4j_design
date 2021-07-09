@@ -8,11 +8,16 @@ CREATE TABLE person (
 
 );
 
+/*
+ Рядом с внешним ключом необходимо указывать unique. Это значит, что данное значение уникально среди всех
+ записей данного столбца. Без этого ограничения(constraint) мы получим связь many-to-one.
+ */
 CREATE TABLE passport (
                       id serial primary key,
                       number int NOT NULL,
                       issuing_authority varchar(50) NOT NULL,
-                      person_id int references person(id) unique
+                      person_id int references person(id) unique -- использование unique дает связь one-to-one.
+
 );
 
 
