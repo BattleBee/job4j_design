@@ -45,7 +45,7 @@ public class SimpleArray<T> implements Iterable<T> {
      * @param index
      */
     public T get(int index) {
-        if (index >= 0 && index < arr.length) {
+        if (index == Objects.checkIndex(index, size)) {
             return arr[index];
         }
         return null;
