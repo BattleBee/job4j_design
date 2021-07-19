@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Role extends Base { // ++
     private String name;
 
-    public Role (String id, String name) {
+    public Role(String id, String name) {
         super(id);
         this.name = name;
     }
@@ -18,6 +18,10 @@ public class Role extends Base { // ++
         this.name = name;
     }
 
+    /**
+     * возвращает  значение приватного поля id для элемента контейнера
+     * @return id элемента
+     */
     @Override
     public String getId() {
         return super.getId();

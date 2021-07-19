@@ -2,7 +2,10 @@ package ru.job4j.generics.store;
 
 import java.util.Objects;
 
-public class User extends Base { // ++
+/**
+ * Класс устанавливает тип элемента для контейнера
+ */
+public class User extends Base {
     private String name;
 
     public User(String id, String name) {
@@ -10,14 +13,26 @@ public class User extends Base { // ++
         this.name = name;
     }
 
+    /**
+     * возвращает  значение приватного поля <n>name</n> для элемента контейнера
+     * @return <n>name</n>>
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Задает  значение приватного поля <n>name</n> для элемента контейнера
+     * @param name значение поля <n>name</n> элемента
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * возвращает  значение приватного поля id для элемента контейнера
+     * @return id элемента
+     */
     @Override
     public String getId() {
         return super.getId();
