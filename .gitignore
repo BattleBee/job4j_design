@@ -1,4 +1,5 @@
 *.iml
 target
 .idea
-.properties
+app.properties
+.travis.yml

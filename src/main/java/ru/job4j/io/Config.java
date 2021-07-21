@@ -29,10 +29,10 @@ public class Config {
 
     /**
      * Осуществляет считывание всех ключей из конфигурационного файла и записывает их в карту values.
-     *
+     * При этом, пустые строки и коментарии (начинающиеся с #) - пропускаются.
      */
     public void load() {
-        try (BufferedReader in = new BufferedReader(new FileReader(path))) {
+        try (var in = new BufferedReader(new FileReader(path))) {
             for (String line = in.readLine(); line != null; line = in.readLine()) {
                 if (line.startsWith("#") || line.isEmpty()) {
                     continue;
@@ -58,8 +58,8 @@ public class Config {
 
     @Override
     public String toString() {
-        StringJoiner out = new StringJoiner(System.lineSeparator());
-        try (BufferedReader read = new BufferedReader(new FileReader(this.path))) {
+        var out = new StringJoiner(System.lineSeparator());
+        try (var read = new BufferedReader(new FileReader(this.path))) {
             read.lines().forEach(out::add);
         } catch (Exception e) {
             e.printStackTrace();
@@ -68,7 +68,7 @@ public class Config {
     }
 
     public static void main(String[] args) {
-        Config config = new Config("app.properties");
+        var config = new Config("app.properties");
         config.load();
         System.out.println("values = " + config.values);
         System.out.println("password = " + config.values.get("password"));
