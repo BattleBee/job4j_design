@@ -129,7 +129,7 @@ public class SimpleArray<T> implements Iterable<T> {
         simpleArray.add(2);
         simpleArray.add(1);
         simpleArray.forEach(System.out::println);
-        }
+    }
 }
 
 
