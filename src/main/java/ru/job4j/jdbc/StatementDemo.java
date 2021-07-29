@@ -51,13 +51,17 @@ public class StatementDemo {
 
     public static void main(String[] args) throws Exception {
         try (var connection = getConnection()) { // создаем соединение
-            try (var statement = connection.createStatement()) { // создаем запрос
+    /*
+    Класс Statement предназначен для исполнения операций типа DDL, т.е. для создания, удаления, обновления
+    таблиц/баз данных.
+    */
+            try (var statement = connection.createStatement()) { // создаем запрос используя Statement
                 var sql = String.format(
                         "create table if not exists demo_table(%s, %s);", 
                         "id serial primary key",
                         "name text"
                 );
-                statement.execute(sql); // исполнение сформированного запроса
+                statement.execute(sql); // исполнение сформированного Statement запроса
 // Чтобы проверить, что таблица создалась, выведем ее схему с помощью метода getTableScheme, а именно столбцы и их типы.
                 System.out.println(getTableScheme(connection, "demo_table"));
             }

@@ -13,7 +13,7 @@ public class TableEditor implements AutoCloseable {
      */
     private Connection connection;
     /**
-     * ??? где его брать
+     * содержит начения из конфигурационного файла
      */
     private final Properties properties;
 
