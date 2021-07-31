@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * В данном классе практикуется специальный класс PrepareStatement. Данный класс в отличии от Statement
- * предназначен для DML операций – INSERT, SELECT, UPDATE, DELETE.
+ * В данном классе практикуется метод prepareStatement(), который создает объект специального класса PrepareStatement.
+ * Данный класс в отличии от класса Statement предназначен для DML операций – INSERT, SELECT, UPDATE, DELETE.
  * Предварительно создал в БД таблицу по скрипту:
  * create table cities(
  *     id serial primary key,
@@ -41,9 +41,9 @@ public class PrepareStatementDemo {
 
     /**
      * Добавляет значение в таблицу
-     * Обратить внимание- Во-первых, параметры, т.е. места куда будут подставляться аргументы обозначаются «?».
-     * Во-вторых, для подстановки аргументов используются методы виды “setТип(позиция, аргумент)”.
-     * В-третьих, позиция аргумента считается как его порядковый номер, а не как индекс, т.е. позиции начинаются с 1.
+     * Обратить внимание- параметры, т.е. места куда будут подставляться аргументы обозначаются «?».
+     * для подстановки аргументов используются методы виды “setТип(позиция, аргумент)”.
+     * Позиция аргумента считается как его порядковый номер, а не как индекс, т.е. позиции начинаются с 1.
      * @param city City вносимый в таблицу
      * @return City
      */
@@ -67,8 +67,10 @@ public class PrepareStatementDemo {
 
     /**
      * Обновляет данные в таблице, вносит измененные значения поля в таблицу
+     * Чтобы узнать произошло само обновление, используем метод executeUpdate(), если это метод возвращает 0,
+     * значит оно не произошло, поэтому проверяем, что результат больше 0.
      * @param city City
-     * @return true или false в зависимости от выполнения
+     * @return true возвращает boolean, это нужно для того, чтобы узнать произошло обновление или нет.
      */
     public boolean update(City city) {
         boolean result = false;
@@ -102,6 +104,13 @@ public class PrepareStatementDemo {
         return result;
     }
 
+    /**
+     *
+     * ResultSet используется вместе с try-with-resources. Для получения доступа к элементу записи используется
+     * метод «getТип(имя_столбца)».Чтобы сдвинуть курсор используется метод next(), если он возвращает true,
+     * то сдвиг произошел и мы можем получить данные.
+     * @return коллекцию с перечнем городов ArrayList<City>
+     */
     public List<City> findAll() {
         List<City> cities = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement("select * from cities")) {
@@ -128,8 +137,8 @@ public class PrepareStatementDemo {
     }
 
     public static void main(String[] args) throws Exception {
-        City msk = new City(1, "Москва", 5_000_000);
-        City spb = new City(2, "Питер", 3_000_000);
+        City msk = new City(0, "Москва", 5_000_000);
+        City spb = new City(0, "Питер", 3_000_000);
         PrepareStatementDemo psd = new PrepareStatementDemo();
         psd.insert(msk);
         psd.insert(spb);
@@ -142,5 +151,12 @@ public class PrepareStatementDemo {
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++");
         psd.delete(spb.getId());
         psd.printAll();
+        System.out.println(msk.getId());
+
     }
 }
+
+/**
+ * DELETE FROM cities;
+ * DROP TABLE cities;
+ */

@@ -1,20 +1,11 @@
 package ru.job4j.jdbc;
 
 public class City {
-    private int id;
+    private int id = 1;
 
     private String name;
 
     private int population;
-
-    @Override
-    public String toString() {
-        return "City{"
-                + "id=" + id
-                + ", name='" + name + '\''
-                + ", population=" + population
-                + '}';
-    }
 
     public City(int id, String name, int population) {
         this.id = id;
@@ -44,5 +35,14 @@ public class City {
 
     public void setPopulation(int population) {
         this.population = population;
+    }
+
+    @Override
+    public String toString() {
+        return "City{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + ", population=" + population
+                + '}';
     }
 }
