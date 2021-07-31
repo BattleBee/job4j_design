@@ -15,6 +15,9 @@ import java.util.List;
  *     name text,
  *     population int
  * );
+ * Для удаления всех значений таблицы или самой таблицы спользовать в БД скрипты:
+ * DELETE FROM cities;
+ * DROP TABLE cities;
  */
 public class PrepareStatementDemo {
 
@@ -152,11 +155,5 @@ public class PrepareStatementDemo {
         psd.delete(spb.getId());
         psd.printAll();
         System.out.println(msk.getId());
-
     }
 }
-
-/**
- * DELETE FROM cities;
- * DROP TABLE cities;
- */
