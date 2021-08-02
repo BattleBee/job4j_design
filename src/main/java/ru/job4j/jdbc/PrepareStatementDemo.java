@@ -120,7 +120,7 @@ public class PrepareStatementDemo {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     cities.add(new City(
-                            resultSet.getInt("id"),
+//                            resultSet.getInt("id"),  // и убрать это, т.к. конструктор не позволяет
                             resultSet.getString("name"),
                             resultSet.getInt("population")
                     ));
@@ -140,8 +140,8 @@ public class PrepareStatementDemo {
     }
 
     public static void main(String[] args) throws Exception {
-        City msk = new City(0, "Москва", 5_000_000);
-        City spb = new City(0, "Питер", 3_000_000);
+        City msk = new City("Москва", 5_000_000);
+        City spb = new City("Питер", 3_000_000);
         PrepareStatementDemo psd = new PrepareStatementDemo();
         psd.insert(msk);
         psd.insert(spb);
@@ -153,7 +153,7 @@ public class PrepareStatementDemo {
         psd.printAll();
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++");
         psd.delete(spb.getId());
-        psd.printAll();
-        System.out.println(msk.getId());
+        psd.printAll(); // выводит без правильного id
+        System.out.println(msk.getId()); // эта команда выводит id
     }
 }
