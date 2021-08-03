@@ -120,7 +120,7 @@ public class PrepareStatementDemo {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     cities.add(new City(
-//                            resultSet.getInt("id"),  // и убрать это, т.к. конструктор не позволяет
+                            resultSet.getInt("id"),
                             resultSet.getString("name"),
                             resultSet.getInt("population")
                     ));
@@ -153,7 +153,7 @@ public class PrepareStatementDemo {
         psd.printAll();
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++");
         psd.delete(spb.getId());
-        psd.printAll(); // выводит без правильного id
-        System.out.println(msk.getId()); // эта команда выводит id
+        psd.printAll();
+        System.out.println(msk.getId());
     }
 }

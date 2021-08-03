@@ -7,16 +7,16 @@ public class City {
 
     private int population;
 
-    public City(String name, int population) { // если оставить  только этот конструктор
+    public City(String name, int population) {
         this.name = name;
         this.population = population;
     }
 
-//    public City(int id, String name, int population) {
-//        this.id = id;
-//        this.name = name;
-//        this.population = population;
-//    }
+    public City(int id, String name, int population) {
+        this.id = id;
+        this.name = name;
+        this.population = population;
+    }
 
     public int getId() {
         return id;
