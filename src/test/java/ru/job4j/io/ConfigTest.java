@@ -9,7 +9,7 @@ public class ConfigTest {
 
     @Test
     public void whenPairWithoutComment() {
-        String path = "data/testWithoutComments.properties";
+        String path = "src/main/resources/properties/testWithoutComments.properties";
         Config config = new Config(path);
         config.load();
         assertThat(config.value("name"), is("Petr Arsentev"));
@@ -18,7 +18,7 @@ public class ConfigTest {
 
     @Test
     public void whenPairWithCommentAndEmptyLines() {
-        String path = "data/testFullContent.properties";
+        String path = "src/main/resources/properties/testFullContent.properties";
         Config config = new Config(path);
         config.load();
         assertThat(config.value("name"), is("Petr"));
@@ -27,7 +27,7 @@ public class ConfigTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void whenWrongSyntax() {
-        String path = "data/testWrongSyntax.properties";
+        String path = "src/main/resources/properties/testWrongSyntax.properties";
         Config config = new Config(path);
         config.load();
     }
