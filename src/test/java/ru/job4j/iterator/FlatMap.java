@@ -12,10 +12,11 @@ import java.util.Collections;
  * В этом задании нельзя копировать элементы во временный список.
  * @param <T> обобщенный тип, используемый внутри класса вместо реального типа данных,
  *            который задается при создании экземпляра класса.
+ * private Iterator<T> cursor = Collections.emptyIterator(); - используем пустой итератор в каестве курсора
  */
 public class FlatMap<T> implements Iterator<T> {
     private final Iterator<Iterator<T>> data;
-    private Iterator<T> cursor = Collections.emptyIterator(); // пустой итератор в каестве курсора
+    private Iterator<T> cursor = Collections.emptyIterator();
 
     public FlatMap(Iterator<Iterator<T>> data) {
         this.data = data;

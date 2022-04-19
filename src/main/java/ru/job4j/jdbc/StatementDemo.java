@@ -6,6 +6,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.StringJoiner;
 
+/**
+ * Класс Statement предназначен для исполнения операций типа DDL, т.е. для создания, удаления, обновления
+ *  таблиц/баз данных.
+ *  Чтобы проверить, что таблица создалась, в завершении main метода выведем схему с помощью метода getTableScheme,
+ *  а именно столбцы и их типы.
+ */
 public class StatementDemo {
     /**
      * Создает подключение к базе данных
@@ -15,7 +21,7 @@ public class StatementDemo {
     private static Connection getConnection() throws Exception {
         var conf = new Config("app.properties");
         conf.load();
-        Class.forName(conf.value("driver")); // регистрация драйвера в системе
+        Class.forName(conf.value("driver"));
         String url = conf.value("url");
         String login = conf.value("username");
         String password = conf.value("password");
@@ -31,7 +37,7 @@ public class StatementDemo {
      * @throws Exception SQLException - при ошибке доступа к базе данных
      */
     public static String getTableScheme(Connection connection, String tableName) throws Exception {
-        var rowSeparator = "-".repeat(20).concat(System.lineSeparator()); // разделитель
+        var rowSeparator = "-".repeat(20).concat(System.lineSeparator());
         var header = String.format("%-10s|%-10s%n", "NAME", "TYPE");
         var buffer = new StringJoiner(rowSeparator, rowSeparator, rowSeparator);
         buffer.add(header);
@@ -50,19 +56,15 @@ public class StatementDemo {
     }
 
     public static void main(String[] args) throws Exception {
-        try (var connection = getConnection()) { // создаем соединение
-    /*
-    Класс Statement предназначен для исполнения операций типа DDL, т.е. для создания, удаления, обновления
-    таблиц/баз данных.
-    */
-            try (var statement = connection.createStatement()) { // создаем запрос используя Statement
+        try (var connection = getConnection()) {
+            try (var statement = connection.createStatement()) {
                 var sql = String.format(
                         "create table if not exists demo_table(%s, %s);", 
                         "id serial primary key",
                         "name text"
                 );
-                statement.execute(sql); // исполнение сформированного Statement запроса
-// Чтобы проверить, что таблица создалась, выведем ее схему с помощью метода getTableScheme, а именно столбцы и их типы.
+                statement.execute(sql);
+
                 System.out.println(getTableScheme(connection, "demo_table"));
             }
         }

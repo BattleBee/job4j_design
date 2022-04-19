@@ -12,16 +12,16 @@ import java.sql.SQLException;
  */
 public class ConnectionDemo {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        var conf = new Config("app.properties"); // указываем из какого конфигурационного файла берем данные
+        var conf = new Config("app.properties");
         conf.load();
-        Class.forName(conf.value("driver")); // регистрация драйвера в системе
+        Class.forName(conf.value("driver"));
         String url = conf.value("url");
         String login = conf.value("username");
         String password = conf.value("password");
-        try (var connection = DriverManager.getConnection(url, login, password)) { // соединение с БД
-            DatabaseMetaData metaData = connection.getMetaData(); //содетжит информацию о БД и ее внутренней структуре
-            System.out.println(metaData.getUserName()); // получение имя пользователя
-            System.out.println(metaData.getURL()); // получение url
+        try (var connection = DriverManager.getConnection(url, login, password)) {
+            DatabaseMetaData metaData = connection.getMetaData();
+            System.out.println(metaData.getUserName());
+            System.out.println(metaData.getURL());
         }
     }
 }

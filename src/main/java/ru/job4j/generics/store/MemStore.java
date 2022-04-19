@@ -31,7 +31,7 @@ public final class MemStore<T extends Base> implements Store<T> {
      * и false если такого элемента нет
      */
     @Override
-    public boolean replace(String id, T model) { //++
+    public boolean replace(String id, T model) {
         return mem.replace(id, model) != null;
     }
 
