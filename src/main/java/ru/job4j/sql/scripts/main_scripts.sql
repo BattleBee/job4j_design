@@ -4,11 +4,11 @@ DROP TABLE IF EXISTS persons;
 /* Создать таблицу с заданными полями (наименование поля, тип, размер, запрет нулевых значений) */
 CREATE TABLE persons
 (
-    id          serial primary key,
+    id serial primary key,
     first_name  varchar(50) NOT NULL,
     second_name varchar(50) NOT NULL,
-    age         int         NOT NULL,
-    address     text        NOT NULL
+    age int NOT NULL,
+    address text NOT NULL
 );
 
 /* Добавить значение в указанные поля */
