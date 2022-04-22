@@ -1,3 +1,5 @@
+-- отработка присоединения (inner join) альясов и псевдонимов столбцов
+
 CREATE TABLE IF NOT EXISTS cars
 (
     id SERIAL PRIMARY KEY,
@@ -29,11 +31,13 @@ INSERT INTO details (id, name, country, car_id)  VALUES
 (4, 'Колесо', 'Финляндия', 1),
 (5, 'Аккумулятор', 'Япония', 3);
 
+-- используем псевдоним столбцов
 select d.name, d.country, c.brand, c.color, c.year
 from details as d
 join cars as c
 on d.car_id = c.id;
 
+-- используем псевдоним столбцов и присваиваем столбцам  новое имя при выводе
 select d.id as Номер_детали, d.name as Наименование, d.country as Страна_производитель,
 c.brand as Установлено_на_автомобиль,
 c.color as Цвет, c.year as Год_выпуска
@@ -41,8 +45,9 @@ from details as d
 join cars as c
 on d.car_id = c.id;
 
+-- объединяем данные в одной ячейке используя оператор конкатенации и задаем разделитель
 select d.id "Номер детали", d.name Наименование, d.country "Страна производитель",
-c.brand ||'/' || c.year || '/' || c.color as "Установлено на"
+c.brand ||'(' || c.year || ') - ' || c.color as "Установлено на"
 from details as d
 join cars as c
 on d.car_id = c.id;
