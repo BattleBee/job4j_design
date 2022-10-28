@@ -3,3 +3,4 @@
 
 
 # job4j_design
+Выполнение заданий курса job4j-Junior

@@ -2,7 +2,7 @@ package ru.job4j.generics.store;
 
 import java.util.Objects;
 
-public class Role extends Base { // ++
+public class Role extends Base {
     private String name;
 
     public Role(String id, String name) {
