@@ -1,7 +1,6 @@
 package ru.job4j.iterator;
 
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.*;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -17,9 +16,9 @@ public class FlatMapTest {
                 List.of(2, 3).iterator()
         ).iterator();
         FlatMap<Integer> flat = new FlatMap<>(data);
-        assertThat(flat.next(), is(1));
-        assertThat(flat.next(), is(2));
-        assertThat(flat.next(), is(3));
+        assertSame(flat.next(), 1);
+        assertSame(flat.next(), 2);
+        assertSame(flat.next(), 3);
     }
 
     @Test
@@ -28,9 +27,9 @@ public class FlatMapTest {
                 List.of(1, 2, 3).iterator()
         ).iterator();
         FlatMap<Integer> flat = new FlatMap<>(data);
-        assertThat(flat.next(), is(1));
-        assertThat(flat.next(), is(2));
-        assertThat(flat.next(), is(3));
+        assertSame(flat.next(), 1);
+        assertSame(flat.next(), 2);
+        assertSame(flat.next(), 3);
     }
 
     @Test
@@ -39,8 +38,8 @@ public class FlatMapTest {
                 List.of(1).iterator()
         ).iterator();
         FlatMap<Integer> flat = new FlatMap<>(data);
-        assertThat(flat.hasNext(), is(true));
-        assertThat(flat.hasNext(), is(true));
+        assertSame(flat.hasNext(), true);
+        assertSame(flat.hasNext(), true);
     }
 
     @Test
@@ -49,8 +48,8 @@ public class FlatMapTest {
                 List.of(1).iterator()
         ).iterator();
         FlatMap<Integer> flat = new FlatMap<>(data);
-        assertThat(flat.next(), is(1));
-        assertThat(flat.hasNext(), is(false));
+        assertSame(flat.next(), 1);
+        assertSame(flat.hasNext(), false);
     }
 
     @Test(expected = NoSuchElementException.class)
@@ -72,7 +71,7 @@ public class FlatMapTest {
         ).iterator();
         FlatMap flat = new FlatMap(it);
         Assert.assertTrue(flat.hasNext());
-        assertThat(1, is(flat.next()));
+        assertSame(1, flat.next());
     }
 
     @Test
