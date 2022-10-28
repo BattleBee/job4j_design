@@ -1,10 +1,10 @@
 package ru.job4j.iterator;
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.Matchers.is;
 
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
 import java.util.NoSuchElementException;
+import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BackwardArrayItTest {
 
@@ -13,8 +13,8 @@ public class BackwardArrayItTest {
         BackwardArrayIt it = new BackwardArrayIt(
                 new int[] {1, 2, 3}
         );
-        assertThat(it.hasNext(), is(true));
-        assertThat(it.hasNext(), is(true));
+        assertTrue(it.hasNext());
+        assertTrue(it.hasNext());
     }
 
     @Test
@@ -22,16 +22,16 @@ public class BackwardArrayItTest {
         BackwardArrayIt it = new BackwardArrayIt(
                 new int[] {1, 2, 3}
         );
-        assertThat(it.next(), is(3));
-        assertThat(it.next(), is(2));
-        assertThat(it.next(), is(1));
+        assertThat(it.next()).isEqualTo(3);
+        assertThat(it.next()).isEqualTo(2);
+        assertThat(it.next()).isEqualTo(1);
     }
 
-    @Test(expected = NoSuchElementException.class)
+    @Test
     public void whenNextFromEmpty() {
         BackwardArrayIt it = new BackwardArrayIt(
                 new int[] {}
         );
-        it.next();
+        assertThrows(NoSuchElementException.class, () -> it.next());
     }
 }

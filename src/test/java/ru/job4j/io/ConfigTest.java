@@ -1,9 +1,7 @@
 package ru.job4j.io;
 
-import org.hamcrest.CoreMatchers;
-import org.junit.Test;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ConfigTest {
 
@@ -12,8 +10,8 @@ public class ConfigTest {
         String path = "src/main/resources/properties/testWithoutComments.properties";
         Config config = new Config(path);
         config.load();
-        assertThat(config.value("name"), is("Petr Arsentev"));
-        assertThat(config.value("surname"), is(CoreMatchers.nullValue()));
+        assertEquals("Petr Arsentev", config.value("name"));
+        assertNull(config.value("surname"));
     }
 
     @Test
@@ -21,15 +19,15 @@ public class ConfigTest {
         String path = "src/main/resources/properties/testFullContent.properties";
         Config config = new Config(path);
         config.load();
-        assertThat(config.value("name"), is("Petr"));
-        assertThat(config.value("surname"), is("Arsentev"));
+        assertEquals("Petr", config.value("name"));
+        assertEquals("Arsentev", config.value("surname"));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void whenWrongSyntax() {
         String path = "src/main/resources/properties/testWrongSyntax.properties";
         Config config = new Config(path);
-        config.load();
+        assertThrows(IllegalArgumentException.class, () -> config.load());
     }
 
 }
