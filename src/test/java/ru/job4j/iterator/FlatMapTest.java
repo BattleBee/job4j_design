@@ -1,13 +1,12 @@
 package ru.job4j.iterator;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class FlatMapTest {
     @Test
@@ -17,9 +16,9 @@ public class FlatMapTest {
                 List.of(2, 3).iterator()
         ).iterator();
         FlatMap<Integer> flat = new FlatMap<>(data);
-        Assertions.assertSame(flat.next(), 1);
-        Assertions.assertSame(flat.next(), 2);
-        Assertions.assertSame(flat.next(), 3);
+        assertSame(flat.next(), 1);
+        assertSame(flat.next(), 2);
+        assertSame(flat.next(), 3);
     }
 
     @Test
@@ -28,9 +27,9 @@ public class FlatMapTest {
                 List.of(1, 2, 3).iterator()
         ).iterator();
         FlatMap<Integer> flat = new FlatMap<>(data);
-        Assertions.assertSame(flat.next(), 1);
-        Assertions.assertSame(flat.next(), 2);
-        Assertions.assertSame(flat.next(), 3);
+        assertSame(flat.next(), 1);
+        assertSame(flat.next(), 2);
+        assertSame(flat.next(), 3);
     }
 
     @Test
@@ -47,8 +46,8 @@ public class FlatMapTest {
                 List.of(1).iterator()
         ).iterator();
         FlatMap<Integer> flat = new FlatMap<>(data);
-        Assertions.assertSame(flat.next(), 1);
-        Assertions.assertFalse(flat.hasNext());
+        assertSame(flat.next(), 1);
+        assertFalse(flat.hasNext());
     }
 
     @Test
@@ -68,7 +67,7 @@ public class FlatMapTest {
         ).iterator();
         FlatMap flat = new FlatMap(it);
         assertTrue(flat.hasNext());
-        Assertions.assertSame(1, flat.next());
+        assertSame(1, flat.next());
     }
 
     @Test
@@ -80,6 +79,6 @@ public class FlatMapTest {
                 Collections.emptyIterator()
         ).iterator();
         FlatMap flat = new FlatMap(it);
-        Assertions.assertFalse(flat.hasNext());
+        assertFalse(flat.hasNext());
     }
 }
